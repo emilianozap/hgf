@@ -33,7 +33,7 @@ export const registerUser = async (
   await sendEmail(email, newCode);
 
   res.status(201).json({
-    msj: "usuario registrado",
+    msg: "usuario registrado",
     user,
   });
 };
