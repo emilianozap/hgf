@@ -63,7 +63,7 @@ export const verifyUser = async (
 
     if (user.code !== code) {
       res.status(401).json({
-        msg: " el código es incorrecto",
+        msg: " el código es incorrectoooooo",
       });
       return;
     }
@@ -168,9 +168,17 @@ export const editPassword = async (
       });
       return;
     }
-    await User.findOneAndUpdate({password});
+    const salt = bcryptjs.genSaltSync();
+
+    user.password = bcryptjs.hashSync(password, salt);
+
+
+    await User.findOneAndReplace({password});
+
+    await user.save();
     res.status(200).json({
       msg: "contraseña modificada con éxito",
+      user
     });
   } catch (error) {}
 };

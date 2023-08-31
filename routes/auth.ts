@@ -10,7 +10,7 @@ router.post("/register",[
     check("nombre", "el nombre es obligatorio").not().isEmpty(),
     check("email", "el email es obligatorio").isEmail(),
     check("password", "el password es obligatorio y debe ser de 6 caracteres").isLength({
-        min: 6
+        min: 8
     }),
     //validación custom
     check("email").custom(existeEmail),
@@ -30,7 +30,7 @@ verifyUser)
 router.post("/login",[
     check("email", "el email es obligatorio").isEmail(),
     check("password", "el password es obligatorio y debe ser de 6 caracteres").isLength({
-        min: 6
+        min: 8
     }),
     recolectarErrores
 
@@ -45,8 +45,8 @@ recuperarPassword
 )
 
 router.patch("/password",[
-    check("password", "el password es obligatorio y debe ser de 6 caracteres").isLength({
-        min: 6
+    check("password", "el password es obligatorio y debe ser de 8 caracteres").isLength({
+        min: 8
     }),
     check("code", "el código es obligatorio").not().isEmpty(),
     recolectarErrores
