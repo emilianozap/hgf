@@ -29,13 +29,16 @@ export class Server {
   }
 
   middlewares(): void {
-    this.app.use(cors())
+    this.app.use(cors({
+      origin: `(https://tienda-backend-iota.vercel.app)`,
+    }));
     this.app.use(express.json());
   }
 
   routes(): void {
     this.app.use(this.authPath, routerAuth);
     this.app.use(this.ordersPath, routerOrder)
+    
     this.app.use(this.issuesPath, routerIssue)
   }
 
@@ -45,3 +48,5 @@ export class Server {
     });
   }
 }
+
+
