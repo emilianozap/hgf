@@ -32,12 +32,9 @@ export const registerUser = async (
 
   await sendEmail(email, newCode);
 
-  const token = await generarJWT(user.id);
-
   res.status(201).json({
     msg: "usuario registrado",
     user,
-    token
   });
 };
 
