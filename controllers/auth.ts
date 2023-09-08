@@ -137,12 +137,22 @@ export const recuperarPassword = async (
 
     user.code = newCode;
 
-    user.code = newCode;
+    await user.save();
+
 
     await sendEmail(email, newCode);
 
+
+
     res.status(200).json({
       msg: "se a enviado a tu correo electrónico tu código de verificación",
+
+
+
+
+
+
+
     });
   } catch (error) {
     console.log(error);
